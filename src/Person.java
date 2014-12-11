@@ -28,6 +28,6 @@ public class Person
   }
   public void recordBirthday ()
   {
-    getAge()++;
+    age++;
   }
 }
