@@ -1,24 +1,71 @@
-import java.util.*
-// class to represent a manager - inherits Emplyee
-public class Manager extends Employee
+// class to represent an emplayee - inherits Person
+public class Employee extends Person
 {
-  private ArrayList<Employee> directReports = new ArrayList<Employee>();
-  private String department;
+  private double hourlyWage;
+  private int hoursWorked;
+  private String jobTitle;
+  private Manager manager;
   
-  public String Manager ()
+  public Employee (String firstName, String lastName, int age, double wagePerHour, int hours, String job)
   {
-    return department;
+    super(firstName, lastName, age);
+    hoursWorked = hours;
+    hourlyWage = wagePerHour;
+    jobTitle = job;
   }
-  public ArrayList<Employee> getDirectReports ()
+  public double getWage ()
   {
-    return directReports;
+    return hourlyWage;
+  }
+  public int getHours ()
+  {
+    return hoursWorked;
+  }
+  public double getWeeklySalary ()
+  {
+    return hoursWorked*hourlyWage;
+  }
+  public double getYearlySalary ()
+  {
+    return getWeeklySalary() * 52;
+  }
+  public String getJobTitle ()
+  {
+    return jobTitle;
   }
   public String toString ()
   {
-    return "Manager :" + super.toString()
+    return super.toString() + " " + jobTitle + "@ " + getYearlySalary();
   }
-  public void addDirectReport (Employee employee)
+  public Manager getManager ()
   {
-    directReports.add(employee);
+    return manager;
+  }
+  public void setWage (double newWage)
+  {
+    hourlyWage = newWage;
+  }
+  public void setHours (int h)
+  {
+    hoursWorked = h;
+  }
+  public void setJobTitle (String title)
+  {
+    jobTitle = title;
+  }
+  public void giveRaise ()
+  {
+    hourlyWage++;
+  }
+  public void setManager (Manager newManager)
+  {
+    if (manager != null)
+    {
+      //remove employee from manager's list
+      manager.removeDirectReport(this);
+    }
+    //add employee to new manager
+    manager = newManager;
+    manager.addDirectReport(this);
   }
 }
