@@ -1,68 +1,38 @@
-// class to represent an emplayee - inherits Person
-public class Employee extends Person
-{
-  private double hourlyWage;
-  private int hoursWorked;
-  private String jobTitle;
-  private Manager manager;
+import java.util.*;
   
-  public Employee (String firstName, String lastName, int age, double wagePerHour, int hours, String job)
+// class to represent a manager - inherits Emplyee
+public class Manager extends Employee
+{
+  private ArrayList<Employee> directReports = new ArrayList<Employee>();
+  private String department;
+  
+  public Manager (String firstName, String lastName, int age, double wagePerHour, int hours, String job, String Dept)
   {
-    super(firstName, lastName, age);
-    hoursWorked = hours;
-    hourlyWage = wagePerHour;
-    jobTitle = job;
+    super(firstName, lastName, age, wagePerHour, hours, job);
+    department = Dept;
   }
-  public double getWage ()
+  public String getDepartment ()
   {
-    return hourlyWage;
+    return department;
   }
-  public int getHours ()
+  public ArrayList<Employee> getDirectReports ()
   {
-    return hoursWorked;
-  }
-  public double getWeeklySalary ()
-  {
-    return hoursWorked*hourlyWage;
-  }
-  public double getYearlySalary ()
-  {
-    return getWeeklySalary() * 52;
-  }
-  public String getJobTitle ()
-  {
-    return jobTitle;
+    return directReports;
   }
   public String toString ()
   {
-    return super.toString()  + " " + jobTitle + "@ " + getYearlySalary();
+    return "Manager :" + super.toString();
   }
-  public Manager getManager ()
+  public void addDirectReport (Employee employee)
   {
-    return manager;
+    directReports.add(employee);
   }
-  public void setWage (double newWage)
+  public void removeDirectReport (Employee employee)
   {
-    hourlyWage = newWage;
+    directReports.remove(employee);
   }
-  public void setHours (int h)
+  public void setDepartment (String dept)
   {
-    hoursWorked = h;
-  }
-  public void setJobTitle (String title)
-  {
-    jobTitle = title;
-  }
-  public void giveRaise ()
-  {
-    hourlyWage++;
-  }
-  public void setManager (Manager newManager)
-  {
-    if (manager != null)
-    {
-      //remove employee from manager's list
-    }
-    //add employee to new manager
+    department = dept;
   }
 }
