@@ -27,4 +27,23 @@ public class OrgChart
       System.out.println("Employee: " + employees2.get(j).toString());
     }
   }
+  public static void printInfo (Person p)
+  {
+    System.out.print(p.getFirstName() + " ");
+    System.out.print(p.getLastName() + " ");
+    System.out.println(p.getAge() + " ");
+    if (p instanceof Employee)
+    {
+      Employee e = (Employee) p;
+      System.out.print(e.getWage() + " ");
+      System.out.print(e.getHours() + " ");
+      //System.out.print(e.get
+    }
+    if (p instanceof Manager)
+    {
+      Manager m = (Manager) p;
+      System.out.print(m.getDirectReports() + " ");
+      System.out.println(m.getDepartment() + " ");
+    }
+  }
 }
