@@ -37,10 +37,16 @@ public class OrgChart
       Employee e = (Employee) p;
       System.out.print(e.getWage() + " ");
       System.out.print(e.getHours() + " ");
-      //System.out.print(e.get
+      System.out.print(e.getJob() + " ");
+      System.out.println(e.getManager() + " ");
     }
     if (p instanceof Manager)
     {
+      Employee e = (Employee) p;
+      System.out.print(e.getWage() + " ");
+      System.out.print(e.getHours() + " ");
+      System.out.print(e.getJob() + " ");
+      System.out.println(e.getManager() + " ");
       Manager m = (Manager) p;
       System.out.print(m.getDirectReports() + " ");
       System.out.println(m.getDepartment() + " ");
